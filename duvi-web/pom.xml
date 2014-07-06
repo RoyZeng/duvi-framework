@@ -21,4 +21,7 @@
     <build>
         <finalName>duvi-web</finalName>
     </build>
+    <properties>
+        <main.basedir>${project.parent.basedir}</main.basedir>
+    </properties>
 </project>

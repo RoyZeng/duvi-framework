@@ -11,5 +11,7 @@
 
     <artifactId>duvi-dao</artifactId>
 
-
+    <properties>
+        <main.basedir>${project.parent.basedir}</main.basedir>
+    </properties>
 </project>
