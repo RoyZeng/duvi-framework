@@ -11,10 +11,12 @@
     <description>Duvi Framework</description>
     <url>https://github.com/jsaneu/duvi-framework</url>
     <inceptionYear>2014</inceptionYear>
+
     <organization>
         <name>Jsan's</name>
         <url>http://projects.jsan.eu/duvi-framework</url>
     </organization>
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -22,6 +24,7 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
     <developers>
         <developer>
             <id>jsan</id>
@@ -29,17 +32,32 @@
             <email>duvi-framework@jsan.eu</email>
         </developer>
     </developers>
+
     <issueManagement>
         <system>GitHub Issues</system>
         <url>https://github.com/jsaneu/duvi-framework/issues</url>
     </issueManagement>
+
     <scm>
         <connection>scm:git:git://github.com/jsaneu/duvi-framework</connection>
         <developerConnection>scm:git:git://github.com/jsaneu/duvi-framework</developerConnection>
         <url>https://github.com/jsaneu/duvi-framework</url>
     </scm>
+
+    <repositories>
+        <repository>
+            <id>jsan.eu</id>
+            <url>http://maven.jsan.eu</url>
+        </repository>
+    </repositories>
+
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-jdbc</artifactId>
+                <version>${tomcat-jdbc.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -51,6 +69,7 @@
         <module>duvi-controller</module>
         <module>duvi-security</module>
         <module>duvi-web</module>
+        <module>duvi-commons</module>
     </modules>
     <build>
         <plugins>
@@ -93,5 +112,6 @@
     <properties>
         <main.basedir>${project.basedir}</main.basedir>
         <version.license-maven-plugin>2.3</version.license-maven-plugin>
+        <tomcat-jdbc.version>1.1.0.1</tomcat-jdbc.version>
     </properties>
 </project>
