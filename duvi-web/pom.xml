@@ -10,14 +10,6 @@
     <packaging>war</packaging>
     <name>Web Example</name>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
-        </dependency>
-    </dependencies>
-
-
     <properties>
         <main.basedir>${project.parent.basedir}</main.basedir>
     </properties>
