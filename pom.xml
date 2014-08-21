@@ -1,14 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2014-2014 Jorge Sánchez (duvi-framework@jsan.eu)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
+    <!--<parent>-->
+    <!--<groupId>org.sonatype.oss</groupId>-->
+    <!--<artifactId>oss-parent</artifactId>-->
+    <!--<version>9</version>-->
+    <!--</parent>-->
 
     <prerequisites>
         <maven>3.0</maven>
@@ -19,8 +35,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Duvi Framework</name>
-    <description>Duvi Framework. A Java/J2EE development framework for enterprise system based on Spring/JPA/Hibernate/ExtJS</description>
+    <name>Duvi framework</name>
+    <description>A Java/J2EE development framework for enterprise system based on Spring/JPA/Hibernate/ExtJS
+    </description>
     <url>https://github.com/jsaneu/duvi-framework</url>
     <inceptionYear>2014</inceptionYear>
 
@@ -40,7 +57,7 @@
     <developers>
         <developer>
             <id>jsan</id>
-            <name>Jorge S.</name>
+            <name>Jorge Sánchez</name>
             <email>duvi-framework@jsan.eu</email>
             <roles>
                 <role>Project Owner</role>
@@ -62,14 +79,14 @@
     </scm>
 
     <modules>
-        <module>duvi-model</module>
-        <module>duvi-dao</module>
+        <module>duvi-commons</module>
+        <module>duvi-entity</module>
+        <module>duvi-repository</module>
         <module>duvi-service</module>
         <module>duvi-job</module>
         <module>duvi-controller</module>
         <module>duvi-security</module>
         <module>duvi-web</module>
-        <module>duvi-commons</module>
     </modules>
 
     <dependencyManagement>
@@ -270,6 +287,33 @@
                 <artifactId>easymock</artifactId>
                 <version>${easymock.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>${spring-data-jpa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 
@@ -372,15 +416,16 @@
                 <configuration>
                     <header>${main.basedir}/NOTICE.txt</header>
                     <properties>
-                        <owner>Jorge S.</owner>
+                        <owner>Jorge Sánchez</owner>
                         <email>duvi-framework@jsan.eu</email>
+                        <currentYear>2014</currentYear>
                     </properties>
                     <excludes>
                         <exclude>**/lib/</exclude>
                         <exclude>**/resources/theme/</exclude>
                         <exclude>src/test/resources/**</exclude>
                         <exclude>src/main/resources/**</exclude>
-                        <exclude>**/*.xml</exclude>
+                        <exclude>src/main/webapp/app/model/**</exclude>
                         <exclude>**/*.txt</exclude>
                         <exclude>**/*.md</exclude>
                         <exclude>**/*.json</exclude>
@@ -457,9 +502,11 @@
         <spring.version>4.0.6.RELEASE</spring.version>
         <spring.batch>3.0.0.RELEASE</spring.batch>
         <spring.security.version>3.2.5.RELEASE</spring.security.version>
+        <spring-data-jpa.version>1.6.2.RELEASE</spring-data-jpa.version>
         <hibernate.version>4.3.6.Final</hibernate.version>
         <querydsl.version>3.4.2</querydsl.version>
         <extclassgenerator-annotations.version>1.0.5</extclassgenerator-annotations.version>
+        <extclassgenerator.version>1.0.2</extclassgenerator.version>
         <extdirectspring.version>1.4.2</extdirectspring.version>
         <jackson-databind.version>2.4.2</jackson-databind.version>
         <guava.version>18.0-rc2</guava.version>
@@ -481,6 +528,10 @@
         <jrebel-maven-plugin.version>1.1.5</jrebel-maven-plugin.version>
         <velocity.version>1.7</velocity.version>
         <quartz.version>2.2.1</quartz.version>
+        <lombok.version>1.14.4</lombok.version>
+        <joda-time.version>2.4</joda-time.version>
+        <validation-api.version>1.1.0.Final</validation-api.version>
+        <hibernate-validator.version>5.1.2.Final</hibernate-validator.version>
 
         <!--Maven plugins-->
         <compiler-plugin.version>3.1</compiler-plugin.version>
@@ -498,5 +549,7 @@
         <jxr-plugin.version>2.4</jxr-plugin.version>
         <project-info-reports-plugin.version>2.7</project-info-reports-plugin.version>
         <license-maven-plugin.version>2.3</license-maven-plugin.version>
+        <apt-maven-plugin.version>1.1.1</apt-maven-plugin.version>
+        <build-helper-maven-plugin.version>1.8</build-helper-maven-plugin.version>
     </properties>
 </project>
